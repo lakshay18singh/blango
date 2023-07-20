@@ -16,7 +16,7 @@ class Comment(models.Model):
   content = models.TextField()
   content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
   object_id = models.PositiveIntegerField()
-  content_object = GenericForeignKey("content_type", "object_id")
+  content_object = GenericForeignKey()
   created_at = models.DateTimeField(auto_now_add=True)
   modified_at = models.DateTimeField(auto_now=True)
 

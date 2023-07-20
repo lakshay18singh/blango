@@ -1,12 +1,12 @@
 from django.forms import ModelForm
-from blog.models import Post
+from blog.models import Post, Comment
 from crispy_forms.layout import Submit
 from crispy_forms.helper import FormHelper
 
 class CommentForm(ModelForm):
 
   class Meta:
-    model = Post
+    model = Comment
     fields = ['content']
   
   def __init__(self, *args, **kwargs):
