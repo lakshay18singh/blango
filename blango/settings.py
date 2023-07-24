@@ -31,7 +31,10 @@ class Dev(Configuration):
     DEBUG = values.BooleanValue(True)
 
     ALLOWED_HOSTS = []
-
+    ACCOUNT_ACTIVATION_DAYS = 7
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+    REGISTRATION_OPEN = False
+    
     LOGGING = {
         "version": 1,
         "disable_existing_loggers": False,
