@@ -23,7 +23,7 @@ from django_registration.backends.activation.views import RegistrationView
 from blango_auth.forms import BlangoRegistrationForm
 
 urlpatterns = [
-    path('api/v1/', include('blog.api_urls')),
+    path('api/v1/', include('blog.api.urls')),
     path('admin/', admin.site.urls),
     path('', blog.views.index),
     path("ip/", blog.views.get_ip),
