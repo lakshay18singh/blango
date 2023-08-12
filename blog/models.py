@@ -3,6 +3,7 @@ from django.conf import settings
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericRelation
+from versatileimagefield.fields import VersatileImageField, PPOIField
 # Create your models here.
 
 class Tag(models.Model):
@@ -32,6 +33,10 @@ class AuthorProfile(models.Model):
     return f"{self.__class__.__name__} object for {self.user}"
 
 class Post(models.Model):
+  hero_image = VersatileImageField(
+    upload_to="hero_images", ppoi_field="ppoi", null = True, blank=True
+  )
+  ppoi = PPOIField(null=True, blank=True)
   author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.PROTECT)
   created_at = models.DateTimeField(auto_now_add=True, db_index = True)
   modified_at = models.DateTimeField(auto_now = True)
