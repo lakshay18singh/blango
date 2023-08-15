@@ -44,7 +44,7 @@ urlpatterns = [
         include('django_registration.backends.activation.urls')
     ),
     path("accounts/", include("allauth.urls")),
-
+    path("post-table/", blog.views.post_table, name="blog-post-table"),
 ]
 
 if settings.DEBUG:
