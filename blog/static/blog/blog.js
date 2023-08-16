@@ -1,14 +1,38 @@
-for(let i = 0; i < 10; i += 1) {
-  console.log("for loop : " + i)
-}
-i = 0
-while(i < 10) {
-  console.log("while loop " + i)
-  i++
-}
-const numbers = [1, 2,3 ,4 ,5, 6, 7, 8, 9]
+class Greeter {
+  constructor (name) {
+    this.name = name
+  }
+  getGreeting() {
+    if(this.name == undefined) {
+      return "Hello No Name"
+    } else {
+      return "Hello " + this.name
+    }
+  }
+  showGreeting(greatingMessage) {
+    console.log(greatingMessage)
+  }
 
-numbers.forEach(x => console.log("For Each: " + x))
+  greet() {
+    this.showGreeting(this.getGreeting())
+  }
+}
+class DelayedGreeter extends Greeter {
+  delay = 2000
+  constructor(name, delay) {
+    super(name)
+    if(delay != undefined) {
+      this.delay = delay
+    }
+  }
+  greet() {
+    setTimeout(() => {this.showGreeting(this.getGreeting())}, this.delay)
+  }
+}
+const g = new Greeter("Lakshay")
+g.greet()
 
-const doubled = numbers.map(x => x*2)
-console.log(doubled)
+const g2 = new DelayedGreeter("Singh", 2000)
+g2.greet()
+
+console.log("Delayed")
